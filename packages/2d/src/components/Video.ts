@@ -287,7 +287,7 @@ export class Video extends Rect {
 
   public clampTime(time: number): number {
     const duration = this.video().duration;
-    if (this.loop()) {
+    if (this.loop() && isFinite(duration) && duration > 0) {
       time %= duration;
     }
     return clamp(0, duration, time);
